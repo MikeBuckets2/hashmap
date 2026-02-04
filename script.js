@@ -81,4 +81,21 @@ class HashMap {
 
         return this.buckets[index].some(([storedKey]) => storedKey === key);
     }
+
+    remove(key) {
+        const index = this.has(key);
+        this._checkIndex(index);
+
+        const bucket = this.buckets[index];
+
+        for (let i = 0; i < bucket.length; i++) {
+            if (bucket[i][0] === key) {
+                bucket.splice(i, 1);
+                this.size--;
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
