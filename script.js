@@ -60,4 +60,18 @@ class HashMap {
             this._resize();
         }
     }
+
+    get(key) {
+        const index = this.hash(key);
+        this._checkIndex(index);
+
+        const bucket = this.buckets[index];
+        for (const [storedKey, value] of bucket) {
+            if (storedKey === key) {
+                return value;
+            }
+        }
+
+        return null;
+    }
 }
