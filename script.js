@@ -74,4 +74,11 @@ class HashMap {
 
         return null;
     }
+
+    has(key) {
+        const index = this.hash(key);
+        this._checkIndex(index);
+
+        return this.buckets[index].some(([storedKey]) => storedKey === key);
+    }
 }
