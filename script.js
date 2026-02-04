@@ -26,4 +26,17 @@ class HashMap {
             throw new Error('Trying to access index out of bounds');
         }
     }
+
+    _resize() {
+        const oldBuckets = this.buckets;
+        this.capacity *= 2;
+        this.buckets = Array(this.capacity).fill(null).map(() => []);
+        this.size = 0;
+
+        for (const bucket of oldBuckets) {
+            for (const [key, value] of bucket) {
+                this.set(key, value);
+            }
+        }
+    }
 }
