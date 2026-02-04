@@ -102,4 +102,9 @@ class HashMap {
     length() {
         return this.size;
     }
+
+    clear() {
+        this.buckets = Array(this.capacity).fill(null).map(() => []);
+        this.size = 0;
+    }
 }
