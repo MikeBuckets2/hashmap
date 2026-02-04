@@ -127,4 +127,14 @@ class HashMap {
         }
         return values;
     }
+
+    entries() {
+        const entries = [];
+        for (const bucket of this.buckets) {
+            for (const pair of bucket) {
+                entries.push(pair);
+            }
+        }
+        return entries;
+    }
 }
