@@ -98,4 +98,8 @@ class HashMap {
 
         return false;
     }
+
+    length() {
+        return this.size;
+    }
 }
