@@ -1,4 +1,4 @@
-class HashMap {
+export class HashMap {
     constructor(loadFactor = 0.75, initialCapacity = 16) {
         this.loadFactor = loadFactor;
         this.capacity = initialCapacity;
@@ -83,7 +83,7 @@ class HashMap {
     }
 
     remove(key) {
-        const index = this.has(key);
+        const index = this.hash(key);
         this._checkIndex(index);
 
         const bucket = this.buckets[index];
