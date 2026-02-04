@@ -39,4 +39,25 @@ class HashMap {
             }
         }
     }
+
+    set(key, value) {
+        const index = this.hash(key);
+        this._checkIndex(index);
+
+        const bucket = this.buckets[index];
+
+        for (let i = 0; i < bucket.length; i++) {
+            if (bucket[i][0] === key) {
+                bucket[i][1] = value;
+                return;
+            }
+        }
+
+        bucket.push([key, value]);
+        this.size++;
+
+        if (this.size / this.capacity > this.loadFactor) {
+            this._resize();
+        }
+    }
 }
